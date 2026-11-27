@@ -61,15 +61,11 @@ colours, text, shapes, icons and labels can all be themed.
 
 ## Installation
 
-The package isn't on pub.dev yet. Add it as a path or git dependency:
+Add the package to your Flutter project:
 
 ```yaml
 dependencies:
-  image_converter:
-    path: ../image_converter
-    # or
-    # git:
-    #   url: https://github.com/Dineth95/image_converter.git
+  image_converter: ^0.0.1
 ```
 
 No platform setup or permissions are needed. The plugin only works with bytes
@@ -468,4 +464,4 @@ The images are written to `doc/screenshots/`.
 
 ## License
 
-Not chosen yet. Add one to [LICENSE](LICENSE) before publishing.
+MIT. See [LICENSE](LICENSE).

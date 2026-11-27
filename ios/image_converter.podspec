@@ -5,13 +5,13 @@
 Pod::Spec.new do |s|
   s.name             = 'image_converter'
   s.version          = '0.0.1'
-  s.summary          = 'A new Flutter plugin project.'
+  s.summary          = 'Convert images to PDF and render PDF pages to images using native APIs.'
   s.description      = <<-DESC
-A new Flutter plugin project.
+Convert images to PDF and render PDF pages to images using native APIs.
                        DESC
-  s.homepage         = 'http://example.com'
-  s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.homepage         = 'https://github.com/Dineth95/image_converter'
+  s.license          = { :type => 'MIT', :file => '../LICENSE' }
+  s.author           = { 'Dineth Prabashwara' => 'prabshwaradineth@gmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
