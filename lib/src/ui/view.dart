@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../types.dart';
 import '../controller.dart';
@@ -14,8 +14,10 @@ typedef ImagePickCallback = Future<List<Uint8List>?> Function();
 typedef PdfPickCallback = Future<Uint8List?> Function();
 
 /// Builds one section of [ImageConverterView] from the controller state.
-typedef ConverterSectionBuilder =
-    Widget Function(BuildContext context, ImageConverterController controller);
+typedef ConverterSectionBuilder = Widget Function(
+  BuildContext context,
+  ImageConverterController controller,
+);
 
 /// A ready-made converter screen: action buttons, progress, status message
 /// and a gallery of the resulting pages.

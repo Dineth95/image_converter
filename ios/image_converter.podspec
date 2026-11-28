@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'image_converter'
-  s.version          = '0.0.1'
+  s.version          = '0.1.0'
   s.summary          = 'Convert images to PDF and render PDF pages to images using native APIs.'
   s.description      = <<-DESC
 Convert images to PDF and render PDF pages to images using native APIs.
@@ -13,9 +13,9 @@ Convert images to PDF and render PDF pages to images using native APIs.
   s.license          = { :type => 'MIT', :file => '../LICENSE' }
   s.author           = { 'Dineth Prabashwara' => 'prabshwaradineth@gmail.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'image_converter/Sources/image_converter/**/*.swift'
   s.dependency 'Flutter'
-  s.platform = :ios, '12.0'
+  s.platform = :ios, '13.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
@@ -25,5 +25,5 @@ Convert images to PDF and render PDF pages to images using native APIs.
   # required reason APIs, update the PrivacyInfo.xcprivacy file to describe your
   # plugin's privacy impact, and then uncomment this line. For more information,
   # see https://developer.apple.com/documentation/bundleresources/privacy_manifest_files
-  # s.resource_bundles = {'image_converter_privacy' => ['Resources/PrivacyInfo.xcprivacy']}
+  # s.resource_bundles = {'image_converter_privacy' => ['image_converter/Sources/image_converter/PrivacyInfo.xcprivacy']}
 end

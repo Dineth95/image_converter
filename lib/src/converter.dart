@@ -104,9 +104,8 @@ class ImageConverter {
     final indexes = pages ?? List.generate(images.length, (i) => i);
     return Future.wait([
       for (var i = 0; i < images.length; i++)
-        File(
-          '${dir.path}/${fileNamePrefix}_${indexes[i] + 1}.$ext',
-        ).writeAsBytes(images[i], flush: true),
+        File('${dir.path}/${fileNamePrefix}_${indexes[i] + 1}.$ext')
+            .writeAsBytes(images[i], flush: true),
     ]);
   }
 }

@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'theme.dart';
 
@@ -322,8 +322,11 @@ class PdfPagePreview extends StatelessWidget {
 enum PdfGalleryLayout { list, grid }
 
 /// Signature for building one gallery item.
-typedef PdfPageItemBuilder =
-    Widget Function(BuildContext context, int index, Uint8List bytes);
+typedef PdfPageItemBuilder = Widget Function(
+  BuildContext context,
+  int index,
+  Uint8List bytes,
+);
 
 /// A scrollable list or grid of page images, with an empty state.
 class PdfPageGallery extends StatelessWidget {

@@ -37,7 +37,8 @@ void main() {
     expect(
       imports.where(
         (u) => RegExp(
-          r'package:flutter/(material|widgets|cupertino|rendering|painting)\.dart',
+          r'package:flutter/(material|widgets|cupertino|rendering|painting)\.dart'
+          r'|package:(material_ui|cupertino_ui)/',
         ).hasMatch(u),
       ),
       isEmpty,

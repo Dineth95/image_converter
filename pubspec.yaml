@@ -1,6 +1,6 @@
 name: image_converter
 description: "Convert images (PNG, JPEG, HEIC...) to PDF and render PDF pages to images using native Android and iOS PDF APIs."
-version: 0.0.1
+version: 0.1.0
 homepage: https://github.com/Dineth95/image_converter
 repository: https://github.com/Dineth95/image_converter
 issue_tracker: https://github.com/Dineth95/image_converter/issues
@@ -21,12 +21,13 @@ screenshots:
     path: doc/screenshots/4_dark_error.png
 
 environment:
-  sdk: ^3.8.1
-  flutter: '>=3.3.0'
+  sdk: ^3.13.0
+  flutter: '>=3.47.0'
 
 dependencies:
   flutter:
     sdk: flutter
+  material_ui: ^1.11.1
   plugin_platform_interface: ^2.0.2
 
 dev_dependencies:

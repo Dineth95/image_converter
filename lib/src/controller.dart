@@ -15,8 +15,9 @@ enum ConversionKind { imagesToPdf, pdfToImages }
 /// any state-management approach and with no widgets at all. The bundled
 /// `ImageConverterView` (from `image_converter_ui.dart`) can also use one.
 class ImageConverterController extends ChangeNotifier {
-  ImageConverterController({ImageConverter converter = const ImageConverter()})
-    : _converter = converter;
+  /// [converter] defaults to `const ImageConverter()`; pass your own to
+  /// customise or fake it.
+  ImageConverterController({this._converter = const ImageConverter()});
 
   final ImageConverter _converter;
   bool _disposed = false;

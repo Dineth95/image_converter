@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:image_converter/image_converter_ui.dart';
 
@@ -78,21 +78,17 @@ class ConverterScreen extends StatelessWidget {
   final ValueChanged<bool> onToggleTheme;
 
   Future<List<Uint8List>?> _pickImages() async {
-    final r = await FilePicker.pickFiles(
-      type: FileType.image,
-      allowMultiple: true,
-      withData: true,
-    );
-    return r?.files.map((f) => f.bytes).whereType<Uint8List>().toList();
+    final files = await FilePicker.pickFiles(type: FileType.image);
+    if (files.isEmpty) return null; // cancelled
+    return Future.wait(files.map((f) => f.xFile.readAsBytes()));
   }
 
   Future<Uint8List?> _pickPdf() async {
-    final r = await FilePicker.pickFiles(
+    final file = await FilePicker.pickFile(
       type: FileType.custom,
       allowedExtensions: ['pdf'],
-      withData: true,
     );
-    return r?.files.single.bytes;
+    return file?.xFile.readAsBytes();
   }
 
   Future<void> _savePdf(BuildContext context, Uint8List pdf) async {
@@ -101,9 +97,8 @@ class ConverterScreen extends StatelessWidget {
     );
     await file.writeAsBytes(pdf);
     if (context.mounted) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Saved to ${file.path}')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Saved to ${file.path}')));
     }
   }
 

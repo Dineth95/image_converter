@@ -6,7 +6,7 @@ and no widgets, or **with UI**, using a ready-made converter screen whose
 colours, text, shapes, icons and labels can all be themed.
 
 ![Platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS-blue)
-![Flutter](https://img.shields.io/badge/flutter-%3E%3D3.32-02569B?logo=flutter)
+![Flutter](https://img.shields.io/badge/flutter-%3E%3D3.47-02569B?logo=flutter)
 
 <table>
   <tr>
@@ -57,7 +57,7 @@ colours, text, shapes, icons and labels can all be themed.
 | Platform | Minimum | Image → PDF | PDF → image |
 |----------|---------|-------------|-------------|
 | Android  | API 21  | `android.graphics.pdf.PdfDocument` | `android.graphics.pdf.PdfRenderer` |
-| iOS      | 12.0    | `UIGraphicsPDFRenderer` | `CGPDFDocument` |
+| iOS      | 13.0    | `UIGraphicsPDFRenderer` | `CGPDFDocument` |
 
 ## Installation
 
@@ -65,8 +65,12 @@ Add the package to your Flutter project:
 
 ```yaml
 dependencies:
-  image_converter: ^0.0.1
+  image_converter: ^0.1.0
 ```
+
+Requirements: Flutter 3.47 or later (Dart 3.13). On iOS the plugin supports
+both Swift Package Manager and CocoaPods. On Android it uses built-in Kotlin
+(AGP 9), like apps created with current Flutter.
 
 No platform setup or permissions are needed. The plugin only works with bytes
 and files you pass to it. To let users choose files, add a picker such as
@@ -81,7 +85,7 @@ The package has two entry points. Import the one you need:
 | Import | You get | Depends on |
 |--------|---------|------------|
 | `package:image_converter/image_converter.dart` | **Core.** `ImageConverter`, `ImageConverterController`, `PdfPageSize`, `ImageFormat`, file helpers | `flutter/foundation` and `flutter/services` only |
-| `package:image_converter/image_converter_ui.dart` | **Core and UI.** Everything above plus `ImageConverterView`, the building-block widgets, `ImageConverterThemeData`, `ImageConverterTheme`, `ImageConverterLabels` | Material |
+| `package:image_converter/image_converter_ui.dart` | **Core and UI.** Everything above plus `ImageConverterView`, the building-block widgets, `ImageConverterThemeData`, `ImageConverterTheme`, `ImageConverterLabels` | [`material_ui`](https://pub.dev/packages/material_ui) |
 
 - **Headless.** Import only `image_converter.dart`. Use it with your own UI,
   with any state-management library, in a background isolate, or in code
@@ -93,7 +97,14 @@ You can mix the two: call the core API in one place and show
 `ImageConverterView` in another. Both use the same native plugin.
 
 A test (`test/library_split_test.dart`) checks that the core import never
-pulls in Material, Cupertino or the widgets library.
+pulls in Material (`material_ui` or `flutter/material`), Cupertino or the
+widgets library.
+
+The widgets are built on [`material_ui`](https://pub.dev/packages/material_ui),
+which replaces the deprecated `package:flutter/material.dart`. If your app
+still uses `flutter/material.dart`, follow
+[`material_ui`'s migration guide](https://pub.dev/packages/material_ui), or
+wrap the converter widgets in its `MaterialUiCompatibilityBridge`.
 
 ## Converting in code
 

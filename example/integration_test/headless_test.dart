@@ -15,9 +15,8 @@ Future<Uint8List> _png(int w, int h) async {
     ui.Paint()..color = const ui.Color(0xFF4CAF50),
   );
   final image = await recorder.endRecording().toImage(w, h);
-  return (await image.toByteData(
-    format: ui.ImageByteFormat.png,
-  ))!.buffer.asUint8List();
+  return (await image.toByteData(format: ui.ImageByteFormat.png))!.buffer
+      .asUint8List();
 }
 
 void main() {
